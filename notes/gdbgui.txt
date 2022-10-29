@@ -1,0 +1,3 @@
+gdbgui -g "./arm-none-eabi-gdb target remote 172.18.80.1:3333"
+
+The IP address came from checking `ip route`

@@ -6,19 +6,136 @@ set (CMakeHelloWorldProject_VERSION_MAJOR 1)
 set (CMakeHelloWorldProject_VERSION_MINOR 0)
 
 # STM32G0 repository path.
-set(STM32G0_REPO_PATH STM32CubeG0)
+set(STM32F4_REPO_PATH STM32CubeF4)
 
-# Interface target for the STM32CubeG0
-add_library(STM32CubeG0 INTERFACE)
-target_include_directories(STM32CubeG0
-    INTERFACE ${STM32G0_REPO_PATH}/Drivers/CMSIS/Device/ST/STM32G0xx/Include
-              ${STM32G0_REPO_PATH}/Drivers/STM32G0xx_HAL_Driver/Inc
-              ${STM32G0_REPO_PATH}/Drivers/CMSIS/Include
-              ${STM32G0_REPO_PATH}/Drivers/CMSIS/DSP/Include
+
+# Interface target for the STM32CubeF4
+add_library(STM32CubeF4 INTERFACE)
+target_include_directories(STM32CubeF4
+    INTERFACE ${STM32F4_REPO_PATH}/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+              ${STM32F4_REPO_PATH}/Drivers/STM32L4xx_HAL_Driver/Inc
+              ${STM32F4_REPO_PATH}/Drivers/CMSIS/Include
+              ${STM32F4_REPO_PATH}/Drivers/CMSIS/DSP/Include
+              ${STM32F4_REPO_PATH}/Drivers/BSP/STM32F4xx_Nucleo
+              ${STM32F4_REPO_PATH}/Drivers/CMSIS/Device/ST/STM32F4xx/Include
 )
 
+set(STM32F4XX_HAL_PATH "STM32CubeF4/Drivers/STM32F4xx_HAL_Driver")
+add_library(STM32F4xx_HAL_Driver STATIC
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_adc.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_adc_ex.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_can.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_cec.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_cortex.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_crc.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_cryp.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_cryp_ex.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_dac.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_dac_ex.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_dcmi.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_dcmi_ex.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_dfsdm.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_dma.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_dma2d.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_dma_ex.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_dsi.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_eth.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_exti.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_flash.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_flash_ex.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_flash_ramfunc.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_fmpi2c.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_fmpi2c_ex.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_fmpsmbus.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_fmpsmbus_ex.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_gpio.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_hash.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_hash_ex.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_hcd.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_i2c.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_i2c_ex.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_i2s.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_i2s_ex.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_irda.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_iwdg.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_lptim.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_ltdc.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_ltdc_ex.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_mmc.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_msp_template.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_nand.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_nor.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_pccard.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_pcd.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_pcd_ex.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_pwr.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_pwr_ex.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_qspi.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_rcc.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_rcc_ex.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_rng.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_rtc.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_rtc_ex.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_sai.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_sai_ex.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_sd.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_sdram.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_smartcard.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_smbus.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_spdifrx.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_spi.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_sram.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_tim.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_tim_ex.c"
+    # "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_timebase_rtc_alarm_template.c"
+    # "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_timebase_rtc_wakeup_template.c"
+    # "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_timebase_tim_template.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_uart.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_usart.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_hal_wwdg.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_ll_adc.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_ll_crc.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_ll_dac.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_ll_dma.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_ll_dma2d.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_ll_exti.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_ll_fmc.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_ll_fmpi2c.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_ll_fsmc.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_ll_gpio.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_ll_i2c.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_ll_lptim.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_ll_pwr.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_ll_rcc.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_ll_rng.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_ll_rtc.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_ll_sdmmc.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_ll_spi.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_ll_tim.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_ll_usart.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_ll_usb.c"
+    "${STM32F4XX_HAL_PATH}/Src/stm32f4xx_ll_utils.c"
+)
+target_include_directories(STM32F4xx_HAL_Driver PUBLIC "${STM32F4XX_HAL_PATH}/Inc")
+target_include_directories(STM32F4xx_HAL_Driver PRIVATE "Inc")
+target_compile_definitions(STM32F4xx_HAL_Driver PUBLIC STM32F429xx)
+target_compile_options(STM32F4xx_HAL_Driver PUBLIC "-mcpu=cortex-m4")
+target_link_libraries(STM32F4xx_HAL_Driver STM32CubeF4)
+
+
 # Setup our executable target
-add_executable (CMakeHelloWorld main.cpp startup_stm32g0b1retx.s system_stm32g0xx.cpp)
-target_compile_definitions(CMakeHelloWorld PUBLIC STM32G0B1xx)
-target_link_libraries(CMakeHelloWorld STM32CubeG0)
-target_link_options(CMakeHelloWorld PRIVATE "LINKER:-T,../STM32G0B1RETX_FLASH.ld")
+add_executable (CMakeHelloWorld 
+    Src/main.c
+    Src/stm32f4xx_it.c
+    Src/system_stm32f4xx.c
+    startup_stm32l476xx.s 
+    STM32CubeF4/Drivers/BSP/STM32F4xx_Nucleo_144/stm32f4xx_nucleo_144.c
+    )
+target_include_directories(CMakeHelloWorld PRIVATE 
+    Inc
+    ${STM32F4_REPO_PATH}/Drivers/BSP/STM32F4xx_Nucleo_144
+)
+target_compile_definitions(CMakeHelloWorld PUBLIC STM32F476xx)
+target_link_libraries(CMakeHelloWorld STM32CubeF4 STM32F4xx_HAL_Driver)
+target_link_options(CMakeHelloWorld PRIVATE "LINKER:-T,../STM32F429ZITx_FLASH.ld")
