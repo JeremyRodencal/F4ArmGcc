@@ -1,0 +1,14 @@
+buildType:
+  default: Debug
+  description: Selects the build variant
+  choices:
+    Debug:
+      short: Debug build
+      buildType: Debug
+      setting:
+        BAREMETAL_ARM_TOOLCHAIN_PATH: /home/jeremy/gcc-arm-none-eabi-10.3-2021.10/bin/
+    Release:
+      short: Release build
+      buildType: Release
+      setting:
+        BAREMETAL_ARM_TOOLCHAIN_PATH: /home/jeremy/gcc-arm-none-eabi-10.3-2021.10/bin/
