@@ -129,7 +129,7 @@ add_executable (CMakeHelloWorld
     Src/main.c
     Src/stm32f4xx_it.c
     Src/system_stm32f4xx.c
-    startup_stm32l476xx.s 
+    startup_stm32f429xx.s 
     STM32CubeF4/Drivers/BSP/STM32F4xx_Nucleo_144/stm32f4xx_nucleo_144.c
     )
 target_include_directories(CMakeHelloWorld PRIVATE 
