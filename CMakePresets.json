@@ -1,0 +1,24 @@
+{
+    "version": 3,
+    "configurePresets": [
+        {
+            "name": "arm-none-eabi",
+            "displayName": "arm-none-eabi toolchain build",
+            "description": "Sets Ninja generator, build and install directory",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "toolchainFile": "arm-none-eabi.cmake",
+            "hidden": true,
+            "cacheVariables": {
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "F429xx_GPIO_Toggle",
+            "configurePreset": "arm-none-eabi",
+            "description": "GPIO pin toggle test",
+            "jobs": 4
+        }
+    ]
+}

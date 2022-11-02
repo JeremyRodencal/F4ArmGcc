@@ -138,4 +138,4 @@ target_include_directories(CMakeHelloWorld PRIVATE
 )
 target_compile_definitions(CMakeHelloWorld PUBLIC STM32F476xx)
 target_link_libraries(CMakeHelloWorld STM32CubeF4 STM32F4xx_HAL_Driver)
-target_link_options(CMakeHelloWorld PRIVATE "LINKER:-T,../STM32F429ZITx_FLASH.ld")
+target_link_options(CMakeHelloWorld PRIVATE "LINKER:-T,../../STM32F429ZITx_FLASH.ld")
